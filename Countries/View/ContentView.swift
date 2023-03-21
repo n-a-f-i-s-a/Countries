@@ -21,18 +21,19 @@ struct ContentView: View {
                         CountryRow(country: country)
                     })
                 }
+                .navigationTitle("Countries")
             case .idle:
                 EmptyView()
             case .error:
                 ErrorView()
             }
-            
         }
-        .navigationTitle("Countries")
+       
         .padding()
         .onAppear {
             countryListViewModel.getAllCountries()
         }
+       
     }
 }
 

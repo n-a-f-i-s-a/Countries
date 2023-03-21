@@ -11,12 +11,16 @@ struct CountryRow: View {
     var country: Country
     
     var body: some View {
+        
         HStack {
-            Text(country.name)
+            AsyncImage(url: country.flagURL)
+                .frame(width: 40              , height: 40)
+                .clipShape(Circle())
+                .shadow(radius: 3.0)
             
-            VStack {
+            VStack(alignment: .leading) {
+                Text(country.name)
                 Text(country.capital?.joined() ?? "")
-                Text("\(country.population)")
             }
         }
     }
@@ -24,6 +28,6 @@ struct CountryRow: View {
 
 struct CountryRow_Previews: PreviewProvider {
     static var previews: some View {
-        CountryRow(country: Country(name: "Australia", capital: ["Canberra"], area: 100.8, population: 24000))
+        CountryRow(country: Country(name: "Australia", capital: ["Canberra"], area: 100.8, population: 24000, flagURL: nil))
     }
 }
